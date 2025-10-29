@@ -48,3 +48,45 @@ class Account:
         if birth_year is None:
             return False
         return birth_year > 1960
+
+    def incoming_transfer(self, amount):
+        self.balance += amount
+
+    def outgoing_transfer(self, amount):
+        if self.balance >= amount:
+            self.balance -= amount
+        else:
+            return False
+        
+    def outgoing_transfer_express(self, amount):
+        if self.balance >= amount:
+            self.balance -= (amount + 1)
+        else:
+            return False
+
+
+class CompanyAccount:
+    def __init__(self, company_name, nip):
+        self.company_name = company_name
+        self.nip = nip
+        self.balance = 0
+
+        if len(nip) != 10:
+            self.nip = "Invalid"
+        else:
+            self.nip = nip
+
+    def incoming_transfer(self, amount):
+        self.balance += amount
+
+    def outgoing_transfer(self, amount):
+        if self.balance >= amount:
+            self.balance -= amount
+        else:
+            return False
+
+    def outgoing_transfer_express(self, amount):
+        if self.balance >= amount:
+            self.balance -= (amount + 5)
+        else:
+            return False
