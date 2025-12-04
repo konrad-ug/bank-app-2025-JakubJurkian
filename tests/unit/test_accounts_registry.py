@@ -1,10 +1,10 @@
 import pytest
 from types import SimpleNamespace
-from src.account_registry import AccountsRegistry
+from src.account_registry import AccountRegistry
 
 @pytest.fixture
 def registry():
-    return AccountsRegistry()
+    return AccountRegistry()
 
 @pytest.mark.parametrize("pesel", ["11111111111", "22222222222", "33333333333"])
 def test_add_and_find_by_pesel(registry, pesel):
